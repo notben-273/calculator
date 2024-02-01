@@ -14,7 +14,28 @@ function divide(number1, number2) {
     return number1 / number2;
 }
 
-console.log(add(32, 37));
-console.log(subtract(84, 15));
-console.log(multiply(3, 23));
-console.log(divide(4761, 69));
+let number1;
+let number2;
+let operator;
+
+function operate(number1, number2, operator) {
+
+    switch (operator) {
+        case "add":
+            return add(number1, number2);
+
+        case "subtract":
+            return subtract(number1, number2);
+
+        case "multiply":
+            return multiply(number1, number2);
+
+        case "divide":
+            return divide(number1, number2);
+    }
+}
+
+console.log(operate(33, 77, "add"));
+console.log(operate(33, 77, "subtract"));
+console.log(operate(33, 77, "multiply"));
+console.log(operate(33, 77, "divide"));
