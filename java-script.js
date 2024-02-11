@@ -23,13 +23,12 @@ clearButton.addEventListener("click", () => {
     operator = 'add';
     displayValue = '';
     display.textContent = '0';
-    decimalEnabled = true;
 });
 
 equalsButton.addEventListener("click", () => {
 
     number1 = operate(number1, displayValue, operator);
-    display.textContent = number1;
+    display.textContent = number1 * 1;
     displayValue = '';
     operator = 'add';
 });
@@ -37,7 +36,7 @@ equalsButton.addEventListener("click", () => {
 addButton.addEventListener('click', () => {
 
     number1 = operate(number1, displayValue, operator);
-    display.textContent = number1;
+    display.textContent = number1 * 1;
     displayValue = '';
     operator = 'add';
 });
@@ -45,38 +44,30 @@ addButton.addEventListener('click', () => {
 subtractButton.addEventListener('click', () => {
 
     number1 = operate(number1, displayValue, operator);
-    display.textContent = number1;
+    display.textContent = number1 * 1;
     displayValue = '';
     operator = 'subtract';
 });
 
 multiplyButton.addEventListener('click', () => {
 
-    if (displayValue == '') {
-        displayValue = '1';
-    }
-
     number1 = operate(number1, displayValue, operator);
-    display.textContent = number1;
+    display.textContent = number1 * 1;
     displayValue = '';
     operator = 'multiply';
 });
 
 divideButton.addEventListener('click', () => {
 
-    if (displayValue == '') {
-        displayValue = '1';
-    }
-
     number1 = operate(number1, displayValue, operator);
-    display.textContent = number1;
+    display.textContent = number1 * 1;
     displayValue = '';
     operator = 'divide';
 });
 
 decimalButton.addEventListener('click', () => {
 
-    if (decimalEnabled == true) {
+    if (!(displayValue.includes('.'))) {
         
         if (displayValue == '') {
 
@@ -88,26 +79,36 @@ decimalButton.addEventListener('click', () => {
         }
 
         display.textContent = displayValue;
-        decimalEnabled = false;
     }
-})
+});
+
+backspaceButton.addEventListener('click', () => {
+
+    displayValue = displayValue.substring(0, displayValue.length - 1);
+    display.textContent = displayValue;
+
+    if (displayValue == '') {
+
+        display.textContent = '0';
+    }
+});
 
 function add(number1, number2) {
-    return +number1 + +number2;
+    return (+number1 + +number2);
 }
 
 function subtract(number1, number2) {
-    return +number1 - +number2;
+    return (+number1 - +number2);
 }
 
 function multiply(number1, number2) {
-    return +number1 * +number2;
+    return (+number1 * +number2);
 }
 
 function divide(number1, number2) {
 
     if (number1 % number2 == 0){
-        return +number1 / +number2;
+        return (+number1 / +number2);
     }
 
     return (+number1 / +number2).toFixed(7);
@@ -116,7 +117,6 @@ function divide(number1, number2) {
 let number1 = 0;
 let operator = 'add';
 let displayValue = '';
-let decimalEnabled = true;
 
 function operate(number1, number2, operator) {
 
@@ -128,11 +128,17 @@ function operate(number1, number2, operator) {
             return subtract(number1, number2);
 
         case "multiply":
+            if (displayValue == '') {
+                displayValue = '1';
+            }
             return multiply(number1, number2);
 
         case "divide":
             if (number2 == '0') {
                 return 'Nice Try';
+            }
+            else if (displayValue == '') {
+                displayValue = '1';
             }
 
             return divide(number1, number2);
