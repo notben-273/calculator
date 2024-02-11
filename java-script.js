@@ -17,81 +17,61 @@ keys.forEach(element => {
     });
 });
 
-clearButton.addEventListener("click", () => {
-    
-    number1 = 0;
-    operator = 'add';
-    displayValue = '';
-    display.textContent = '0';
-});
+document.addEventListener('keydown', (e) => {
 
-equalsButton.addEventListener("click", () => {
+    console.log(e.key);
 
-    number1 = operate(number1, displayValue, operator);
-    display.textContent = number1 * 1;
-    displayValue = '';
-    operator = 'add';
-});
+    if (ACCEPTEDKEYS.includes(e.key)) {
 
-addButton.addEventListener('click', () => {
-
-    number1 = operate(number1, displayValue, operator);
-    display.textContent = number1 * 1;
-    displayValue = '';
-    operator = 'add';
-});
-
-subtractButton.addEventListener('click', () => {
-
-    number1 = operate(number1, displayValue, operator);
-    display.textContent = number1 * 1;
-    displayValue = '';
-    operator = 'subtract';
-});
-
-multiplyButton.addEventListener('click', () => {
-
-    number1 = operate(number1, displayValue, operator);
-    display.textContent = number1 * 1;
-    displayValue = '';
-    operator = 'multiply';
-});
-
-divideButton.addEventListener('click', () => {
-
-    number1 = operate(number1, displayValue, operator);
-    display.textContent = number1 * 1;
-    displayValue = '';
-    operator = 'divide';
-});
-
-decimalButton.addEventListener('click', () => {
-
-    if (!(displayValue.includes('.'))) {
-        
-        if (displayValue == '') {
-
-            displayValue = "0.";
-        }
-        else {
-
-            displayValue = displayValue + '.';
-        }
-
+        displayValue = displayValue + e.key;
         display.textContent = displayValue;
     }
-});
+    else {
 
-backspaceButton.addEventListener('click', () => {
+        switch (e.key) {
+            case '.':
+                decimalFunction();
+                break;
+        
+            case 'Backspace':
+                backspaceFunction();
+                break;
 
-    displayValue = displayValue.substring(0, displayValue.length - 1);
-    display.textContent = displayValue;
+            case 'Enter':
+                equalsFunction();
+                break;
+            
+            case 'Escape':
+                clearFunction();
+                break;
 
-    if (displayValue == '') {
+            case '+':
+                addFunction();
+                break;
 
-        display.textContent = '0';
+            case '-':
+                subtractFunction();
+                break;
+
+            case '*':
+                multiplyFunction();
+                break;
+
+            case '/':
+                divideFunction();
+                break;
+        }
     }
-});
+})
+
+clearButton.addEventListener("click", clearFunction);
+equalsButton.addEventListener("click", equalsFunction);
+addButton.addEventListener('click', addFunction);
+subtractButton.addEventListener('click', subtractFunction);
+multiplyButton.addEventListener('click', multiplyFunction);
+divideButton.addEventListener('click', divideFunction);
+decimalButton.addEventListener('click', decimalFunction);
+backspaceButton.addEventListener('click', backspaceFunction);
 
 function add(number1, number2) {
     return (+number1 + +number2);
@@ -117,6 +97,7 @@ function divide(number1, number2) {
 let number1 = 0;
 let operator = 'add';
 let displayValue = '';
+const ACCEPTEDKEYS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 function operate(number1, number2, operator) {
 
@@ -143,4 +124,80 @@ function operate(number1, number2, operator) {
 
             return divide(number1, number2);
     }
+}
+
+function decimalFunction() {
+
+    if (!(displayValue.includes('.'))) {
+        
+        if (displayValue == '') {
+
+            displayValue = "0.";
+        }
+        else {
+
+            displayValue = displayValue + '.';
+        }
+
+        display.textContent = displayValue;
+    }
+}
+
+function backspaceFunction() {
+
+    displayValue = displayValue.substring(0, displayValue.length - 1);
+    display.textContent = displayValue;
+
+    if (displayValue == '') {
+
+        display.textContent = '0';
+    }
+}
+
+function clearFunction() {
+
+    number1 = 0;
+    operator = 'add';
+    displayValue = '';
+    display.textContent = '0';
+}
+
+function equalsFunction() {
+
+    number1 = operate(number1, displayValue, operator);
+    display.textContent = number1 * 1;
+    displayValue = '';
+    operator = 'add';
+}
+
+function addFunction() {
+
+    number1 = operate(number1, displayValue, operator);
+    display.textContent = number1 * 1;
+    displayValue = '';
+    operator = 'add';
+}
+
+function subtractFunction() {
+
+    number1 = operate(number1, displayValue, operator);
+    display.textContent = number1 * 1;
+    displayValue = '';
+    operator = 'subtract';
+}
+
+function multiplyFunction() {
+
+    number1 = operate(number1, displayValue, operator);
+    display.textContent = number1 * 1;
+    displayValue = '';
+    operator = 'multiply';
+}
+
+function divideFunction() {
+
+    number1 = operate(number1, displayValue, operator);
+    display.textContent = number1 * 1;
+    displayValue = '';
+    operator = 'divide';
 }
