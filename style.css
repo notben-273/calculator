@@ -24,9 +24,9 @@ body {
     flex-direction: column;
     justify-content: center;
     padding: 16px;
-    height: 20vh;
+    height: 30vh;
     background-color: cadetblue;
-    gap: 8px;
+    gap: 6px;
 }
 
 button {
