@@ -5,31 +5,54 @@ body {
     justify-content: center;
 }
 
-#keypad {
+#base {
+    width: 368px;
+    height: 576px;
+    background-color: #545454;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    max-width: 80px;
-    height: 20vh;
-    background-color: brown;
+    gap: 16px;
     padding: 16px;
 }
 
-#controls {
+#display {
+    width: 336px;
+    height: 80px;
+    background-color: #D9D9D9;
+    font-size: 32px;
     display: flex;
+    align-items: center;
+    padding: 0px 16px;
 }
 
-#operators {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 16px;
-    height: 30vh;
-    background-color: cadetblue;
-    gap: 6px;
+.key {
+    width: 80px;
+    height: 80px;
+    background-color: #A6A6A6;
+}
+
+.operator {
+    width: 80px;
+    height: 80px;
+    background-color: #FF914D;
+}
+
+#ac {
+    width: 176px;
+    height: 80px;
+    background-color: #D9D9D9;
+}
+
+#decimal {
+    width: 80px;
+    height: 80px;
+    background-color: #A6A6A6;
+}
+
+#backspace {
+    background-color: #D9D9D9;
 }
 
 button {
-    flex: 0;
-    height: 30px;
+    font-size: 24px;
 }

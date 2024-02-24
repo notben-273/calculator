@@ -8,31 +8,35 @@
     <title>Calculator</title>
 </head>
 <body>
-    <div id="display">0</div>
-    <div id="controls">
-        <div id="keypad">
-            <button class="key" id="7">7</button>
-            <button class="key" id="8">8</button>
-            <button class="key" id="9">9</button>
-            <button class="key" id="4">4</button>
-            <button class="key" id="5">5</button>
-            <button class="key" id="6">6</button>
-            <button class="key" id="1">1</button>
-            <button class="key" id="2">2</button>
-            <button class="key" id="3">3</button>
-            <button class="key" id="0">0</button>
-        </div>
-        <div id="operators">
-            <button id="ac">AC</button>
-            <button id="add">+</button>
-            <button id="subtract">-</button>
-            <button id="multiply">*</button>
-            <button id="divide">/</button>
-            <button id="equals">=</button>
-            <button id="decimal">.</button>
-            <button id="backspace">&lt;</button>
-        </div>
+    <div id="base">
+        <div id="display">0</div>
+
+        <button id="ac">AC</button>
+        <button class="operator" id="backspace">&lt;</button>
+        <button class="operator" id="divide">/</button>        
+
+
+        <button class="key" id="7">7</button>
+        <button class="key" id="8">8</button>
+        <button class="key" id="9">9</button>
+
+        <button class="operator" id="multiply">*</button>
+
+        <button class="key" id="4">4</button>
+        <button class="key" id="5">5</button>
+        <button class="key" id="6">6</button>
+
+        <button class="operator" id="subtract">-</button>
+
+        <button class="key" id="1">1</button>
+        <button class="key" id="2">2</button>
+        <button class="key" id="3">3</button>
+
+        <button class="operator" id="add">+</button>
+
+        <button class="key" id="0" style="width: 176px; height: 80px; background-color: #A6A6A6;">0</button>
+        <button id="decimal">.</button>
+        <button class="operator" id="equals">=</button>
     </div>
-    
 </body>
 </html>
